@@ -21,7 +21,7 @@ export class SideBarComponent {
       {
         name: 'Home',
         icon: 'uil uil-estate',
-        router: ['/', 'auth']
+        router: ['/']
       },
       {
         name: 'Buscar',
@@ -31,7 +31,7 @@ export class SideBarComponent {
       {
         name: 'Tu biblioteca',
         icon: 'uil uil-chart',
-        router: ['/', 'favorites'],
+        router: ['/', 'tracks'],
         query: { hola: 'mundo' }
       }
     ]
@@ -43,7 +43,8 @@ export class SideBarComponent {
       },
       {
         name: 'Canciones que te gustan',
-        icon: 'uil-heart-medical'
+        icon: 'uil-heart-medical',
+        router: ['/', 'favorites'],
       }
     ]
 
