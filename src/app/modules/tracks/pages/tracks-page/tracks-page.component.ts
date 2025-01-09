@@ -12,23 +12,30 @@ import { Subscription } from 'rxjs';
 export class TracksPageComponent implements OnInit, OnDestroy{
   tracksTrending: Array<TrackModel> = [];
   tracksRandom: Array<TrackModel> = [];
-
   listObservers$: Array<Subscription> = [];
+
   constructor(private trackService: TrackService) {}
 
   ngOnInit(): void {
-    const observer1$ = this.trackService.getAllTracks()
-    .subscribe(res =>
-      this.tracksTrending = res.data    
-    )
-    const observer2$ = this.trackService.getAllTracks()
-    .subscribe(res =>
-      this.tracksRandom = res.data  
-    )
-    this.listObservers$.push(observer1$, observer2$)
+    this.loadDataAll()
+    this.loadDataRandom()
   }
 
+  async loadDataAll(): Promise<any> { //Puedo manejarlo como promesa (Investigar porque esta deprecated), tambien como función asincrona
+    this.tracksTrending = await this.trackService.getAllTracks$().toPromise()
+  }
+
+  loadDataRandom(): void {
+    this.trackService.getAllRandom$().subscribe(
+      res => {
+        this.tracksRandom = res;
+      },
+      err => {
+        console.log('Error de Conexión', err);
+      }
+    );
+  }  
+
   ngOnDestroy(): void {
-    this.listObservers$.forEach(e => e.unsubscribe())
   }
 }

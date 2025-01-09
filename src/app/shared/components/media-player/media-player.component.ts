@@ -35,8 +35,8 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
         console.log('Recibiendo track: ', res)
       }
     )
-    const observer2$: Subscription = this.trackService.getAllTracks().subscribe(
-      res => {this.mockCover = res.data[Math.floor(Math.random() * 8)];}  
+    const observer2$: Subscription = this.trackService.getAllTracks$().subscribe(
+      res => {this.mockCover = res[Math.floor(Math.random() * 8)];}  
     )
 
     this.listObservers$.push(observer1$,observer2$)
