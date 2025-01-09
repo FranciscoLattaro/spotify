@@ -1,16 +1,16 @@
 <div class="play-list-body">
     <ul class="play-list-table-header">
-        <li (click)="changeSort('name')">Nombre ❤</li>
-        <li (click)="changeSort('album')">álbum 🆗</li>
-        <li>fecha incorporación 🍌😁</li>
+        <li class="isFilter" (click)="changeSort('name')">Nombre ↓↑</li>
+        <li class="isFilter" (click)="changeSort('album')">álbum ↓↑</li>
+        <li>fecha incorporación </li>
         <li><i class="uil uil-clock-eight"></i></li>
     </ul>
-    <ul class="play-list-rows" *ngFor="let element of tracks">
+    <ul class="play-list-rows" *ngFor="let element of tracks | orderList:optionSort.property:optionSort.order">
         <li class="track-name">
             <ng-container *ngTemplateOutlet="coverSection;context:{track:element}"></ng-container>
         </li>
         <li class="track-name-opacity">
-            {{element.album}}
+            {{element.album }}
         </li>
         <li class="track-name-opacity">
             {{element.album}}

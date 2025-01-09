@@ -13,14 +13,7 @@ export class CardPlayerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('Mode:', this.mode); // Imprime el modo
-    console.log('Track:', this.track); // Imprime el track completo
-    console.log('Track Properties:'); // Detalla cada propiedad
-    console.log('ID:', this.track._id);
-    console.log('Name:', this.track.name);
-    console.log('Album:', this.track.album);
-    console.log('URL:', this.track.url);
-    console.log('Cover:', this.track.cover);
+    
   }
 
 }

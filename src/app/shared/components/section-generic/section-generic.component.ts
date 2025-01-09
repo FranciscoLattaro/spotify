@@ -14,7 +14,5 @@ export class SectionGenericComponent implements OnInit {
   constructor() {  }
 
   ngOnInit(): void{  
-    console.log('Mode:', this.mode); // Imprime el modo
-    console.log('Tracks:', this.dataTracks); // Imprime las pistas
   }
 }
