@@ -20,6 +20,10 @@ export class MultimediaService {
     });
   }
 
+  private listenAllEvents(): void {
+    
+  }
+
   public setAudio(track: TrackModel): void {
     this.audio.src = track.url
     this.audio.play()
