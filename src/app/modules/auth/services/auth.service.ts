@@ -20,7 +20,7 @@ export class AuthService {
         tap((resOK: any) => {
           const { tokenSession } = resOK;
           this.cookie.set('token', tokenSession);
-          this.router.navigate(['/', 'home'])
+          this.router.navigate(['/', 'tracks'])
         }),
         catchError(err => {
           console.error('Error during login:', err);

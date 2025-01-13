@@ -13,33 +13,11 @@ import { environment } from 'src/environtments/environment';
 })
 export class MediaPlayerComponent implements OnInit, OnDestroy {
   private URL = environment.api;
-  mockCover: TrackModel = {
-    cover: 'https://www.electricdust.net/wp-content/uploads/2021/07/3052fa49-7a5a-1f3e-57b6-cf778c50300a.jpg',
-    album: 'Gioli & Assia',
-    name: 'BEBE (Oficial)',
-    url: '',
-    _id: '',
-  }
+  listObservers$: Array<Subscription> = []
 
-  listObservers$: Array<Subscription> = [
-
-  ]
-
-  constructor(private multimediaService: MultimediaService, private trackService: TrackService) {
-
-  }
+  constructor(public multimediaService: MultimediaService) {}
 
   ngOnInit(): void {
-    const observer1$: Subscription = this.multimediaService.callback.subscribe(
-      (res: TrackModel) => {
-        console.log('Recibiendo track: ', res)
-      }
-    )
-    const observer2$: Subscription = this.trackService.getAllTracks$().subscribe(
-      res => {this.mockCover = res[Math.floor(Math.random() * 8)];}  
-    )
-
-    this.listObservers$.push(observer1$,observer2$)
   }
 
   ngOnDestroy(): void {
